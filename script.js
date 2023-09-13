@@ -1,4 +1,10 @@
-const carrito = []; // Array para almacenar elementos del carrito
+let carrito = []; // Array para almacenar elementos del carrito
+
+// Comprobar si hay algo en localStorage al cargar la página
+if (localStorage.getItem("carrito")) {
+  carrito = JSON.parse(localStorage.getItem("carrito"));
+  actualizarBurbujaCarrito(); // Para actualizar la burbuja al cargar la página con el número de ítems en el carrito
+}
 
 // Función para agregar un elemento al carrito
 function agregarAlCarrito(nombre, precio) {
@@ -11,6 +17,8 @@ function agregarAlCarrito(nombre, precio) {
     // Si no existe, agrega un nuevo objeto al carrito con ese cómic
     carrito.push({ nombre, precio, cantidad: 1 });
   }
+
+  localStorage.setItem("carrito", JSON.stringify(carrito));
 
   // Mostrar el Toast
   mostrarToast();
@@ -62,6 +70,8 @@ function actualizarCarrito() {
 
     // Sumar al total
     total += item.precio * item.cantidad;
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
   });
 
   // 3. Mostrar el total en el carrito
@@ -80,8 +90,11 @@ function eliminarDelCarrito(nombre) {
       // Si solo hay uno, elimina el producto completamente del carrito
       carrito.splice(indice, 1);
     }
+
+    actualizarBurbujaCarrito();
     actualizarCarrito();
     mostrarModalCarrito(); // Para refrescar el modal
+    localStorage.setItem("carrito", JSON.stringify(carrito));
   }
 }
 
@@ -109,6 +122,8 @@ document.getElementById("abrirCarrito").addEventListener("click", function () {
 
     li.appendChild(btnEliminar);
     carritoModalLista.appendChild(li);
+
+    totalModal += item.precio * item.cantidad;
   });
 
   // Actualizar el total del modal
