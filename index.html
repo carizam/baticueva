@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <title>La Baticueva</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">La Baticueva</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Inicio <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Cómics</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contacto</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0);" id="abrirCarrito">
+              <i class="fas fa-shopping-cart"></i>
+              Carrito de Compras
+              <span id="burbuja-carrito" class="badge badge-danger"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <header class="jumbotron jumbotron-fluid">
+      <div class="container text-center">
+        <h1 class="display-4">Bienvenido a la baticueva</h1>
+        <p class="lead">
+          Explora una amplia selección de cómics de tus géneros favoritos.
+        </p>
+      </div>
+    </header>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <img src="./Dark Crsis 1.png" class="card-img-top" alt="Comic 1" />
+            <div class="card-body">
+              <h5 class="card-title">Dark Crisis 1</h5>
+              <p class="card-text">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero
+                quam odit consectetur ab voluptatibus quis molestias illo
+                ratione autem quasi impedit, repellendus, sint culpa, enim
+                laboriosam! Quod ullam quis consectetur..
+              </p>
+              <p class="card-text"><strong>Precio: $13.000</strong></p>
+              <button
+                class="btn btn-primary"
+                onclick="agregarAlCarrito('Comic 1', 13.000)"
+              >
+                Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="./Dark Crsis 1.png" class="card-img-top" alt="Comic 1" />
+            <div class="card-body">
+              <h5 class="card-title">Dark Crisis 2</h5>
+              <p class="card-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Asperiores aliquam ea a. Ab consequuntur officiis quis, vel
+                commodi fugit quisquam! Libero at dolorum dolorem sequi magnam!
+                Nulla itaque molestias beatae?
+              </p>
+              <p class="card-text"><strong>Precio: $15.00</strong></p>
+              <button
+                class="btn btn-primary"
+                onclick="agregarAlCarrito('Comic 2', 15.000)"
+              >
+                Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="./Dark Crsis 1.png" class="card-img-top" alt="Comic 1" />
+            <div class="card-body">
+              <h5 class="card-title">Dark Crisis 3</h5>
+              <p class="card-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Asperiores aliquam ea a. Ab consequuntur officiis quis, vel
+                commodi fugit quisquam! Libero at dolorum dolorem sequi magnam!
+                Nulla itaque molestias beatae?
+              </p>
+              <p class="card-text"><strong>Precio: $19.000</strong></p>
+              <button
+                class="btn btn-primary"
+                onclick="agregarAlCarrito('Comic 3', 19.000)"
+              >
+                Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Sección del carrito de compras -->
+
+    <!-- Modal del Carrito -->
+    <div
+      class="modal fade"
+      id="carritoModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="carritoModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="carritoModalLabel">
+              Carrito de Compras
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Cerrar"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <ul id="carrito-modal">
+              <li>
+                Nombre del producto - Precio
+                <button onclick="eliminarDelCarrito('Nombre del producto')">
+                  Eliminar
+                </button>
+              </li>
+            </ul>
+            <p class="modal-total">
+              Total: $<span id="total-modal">0.00</span>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cerrar
+            </button>
+            <button type="button" class="btn btn-primary">
+              Finalizar Compra
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Toast message -->
+    <div
+      class="position-fixed bottom-0 right-0 p-3"
+      style="z-index: 11; right: 0; bottom: 0"
+    >
+      <div
+        id="toastAgregado"
+        class="toast hide"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        data-delay="20000"
+      >
+        <div class="toast-header">
+          <i class="fas fa-check-circle text-success"></i>
+          <strong class="mr-auto ml-2">Carrito de Compras</strong>
+          <button
+            type="button"
+            class="ml-2 mb-1 close"
+            data-dismiss="toast"
+            aria-label="Cerrar"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="toast-body">¡Producto añadido al carrito!</div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
