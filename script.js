@@ -1,3 +1,12 @@
+window.onload = function () {
+  const carritoGuardado = localStorage.getItem("carrito");
+  if (carritoGuardado) {
+    carrito = JSON.parse(carritoGuardado);
+    actualizarCarrito();
+    actualizarBurbujaCarrito();
+  }
+};
+
 let carrito = []; // Array para almacenar elementos del carrito
 
 // Comprobar si hay algo en localStorage al cargar la página
