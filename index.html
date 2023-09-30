@@ -14,6 +14,7 @@
     />
     <link rel="stylesheet" href="./style.css" />
     <link rel="icon" href="./img/batman favicon.png" type="image/png" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <title>The Batcave of comics</title>
   </head>
   <body>
@@ -268,6 +269,56 @@
           </div>
           <div class="modal-body">
             <ul id="carrito-modal">
+              <li></li>
+              <li>
+                Dark Crisis 1 - $13.00
+                <button onclick="restarDelCarrito('Dark Crisis 1')">-</button>
+                <button onclick="agregarAlCarrito('Dark Crisis 1', 13.000)">
+                  +
+                </button>
+              </li>
+              <li>
+                Dark Crisis 2 - $13.00
+                <button onclick="restarDelCarrito('Dark Crisis 2')">-</button>
+                <button onclick="agregarAlCarrito('Dark Crisis 2', 15.000)">
+                  +
+                </button>
+              </li>
+              <li>
+                Dark Crisis 3 - $13.00
+                <button onclick="restarDelCarrito('Dark Crisis 3')">-</button>
+                <button onclick="agregarAlCarrito('Dark Crisis 3', 19.000)">
+                  +
+                </button>
+              </li>
+              <li>
+                Dark Crisis 4 - $13.00
+                <button onclick="restarDelCarrito('Dark Crisis 4')">-</button>
+                <button onclick="agregarAlCarrito('Dark Crisis 4', 19.000)">
+                  +
+                </button>
+              </li>
+              <li>
+                Dark Crisis 5 - $13.00
+                <button onclick="restarDelCarrito('Dark Crisis 5')">-</button>
+                <button onclick="agregarAlCarrito('Dark Crisis 5', 19.000)">
+                  +
+                </button>
+              </li>
+              <li>
+                Dark Crisis 6 - $13.00
+                <button onclick="restarDelCarrito('Dark Crisis 6')">-</button>
+                <button onclick="agregarAlCarrito('Dark Crisis 6', 19.000)">
+                  +
+                </button>
+              </li>
+              <li>
+                Dark Crisis 7 - $13.00
+                <button onclick="restarDelCarrito('Dark Crisis 7')">-</button>
+                <button onclick="agregarAlCarrito('Dark Crisis 7', 19.000)">
+                  +
+                </button>
+              </li>
               <li>
                 Nombre del producto - Precio
                 <button onclick="eliminarDelCarrito('Nombre del producto')">
@@ -279,6 +330,7 @@
               Total: $<span id="total-modal">0.00</span>
             </p>
           </div>
+
           <div class="modal-footer">
             <button
               type="button"
@@ -287,7 +339,12 @@
             >
               Cerrar
             </button>
-            <button type="button" class="btn btn-primary">
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="finalizarCompraBtn"
+              onclick="finalizarCompra()"
+            >
               Finalizar Compra
             </button>
           </div>

@@ -10,6 +10,7 @@ function agregarAlCarrito(nombre, precio) {
     carrito.push({ nombre, precio, cantidad: 1 });
   }
 
+  actualizarCarrito();
   mostrarToast();
   actualizarBurbujaCarrito();
   guardarCarritoEnLocalStorage();
@@ -41,9 +42,18 @@ function actualizarCarrito() {
   let total = 0;
   carrito.forEach((item) => {
     const li = document.createElement("li");
-    li.textContent = `${item.cantidad}x ${item.nombre} - $${(
-      item.precio * item.cantidad
-    ).toFixed(2)}`;
+
+    const btnAgregar = document.createElement("button");
+    btnAgregar.textContent = "+";
+    btnAgregar.onclick = function () {
+      agregarAlCarrito(item.nombre, item.precio);
+    };
+
+    const btnRestar = document.createElement("button");
+    btnRestar.textContent = "-";
+    btnRestar.onclick = function () {
+      restarDelCarrito(item.nombre);
+    };
 
     const btnEliminar = document.createElement("button");
     btnEliminar.textContent = "Eliminar";
@@ -51,6 +61,12 @@ function actualizarCarrito() {
       eliminarDelCarrito(item.nombre);
     };
 
+    li.textContent = `${item.cantidad}x ${item.nombre} - $${(
+      item.precio * item.cantidad
+    ).toFixed(2)}`;
+
+    li.appendChild(btnAgregar);
+    li.appendChild(btnRestar);
     li.appendChild(btnEliminar);
     carritoModalLista.appendChild(li);
 
@@ -61,14 +77,20 @@ function actualizarCarrito() {
   totalSpan.textContent = total.toFixed(2);
 }
 
+function restarDelCarrito(nombre) {
+  const indice = carrito.findIndex((producto) => producto.nombre === nombre);
+  if (indice !== -1 && carrito[indice].cantidad > 1) {
+    carrito[indice].cantidad--;
+    actualizarCarrito();
+    actualizarBurbujaCarrito();
+    guardarCarritoEnLocalStorage();
+  }
+}
+
 function eliminarDelCarrito(nombre) {
   const indice = carrito.findIndex((producto) => producto.nombre === nombre);
   if (indice !== -1) {
-    if (carrito[indice].cantidad > 1) {
-      carrito[indice].cantidad--;
-    } else {
-      carrito.splice(indice, 1);
-    }
+    carrito.splice(indice, 1);
     actualizarCarrito();
     actualizarBurbujaCarrito();
     guardarCarritoEnLocalStorage();
@@ -80,10 +102,36 @@ function guardarCarritoEnLocalStorage() {
   localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
+// Función para mostrar el Sweet Alert
+function mostrarSweetAlert() {
+  Swal.fire({
+    title: "¡Compra Exitosa!",
+    text: "¡Gracias por tu compra!",
+    icon: "success",
+    confirmButtonText: "Aceptar",
+  });
+}
+
+// Función para finalizar la compra
+function finalizarCompra() {
+  mostrarSweetAlert(); // Muestra el Sweet Alert de compra exitosa
+  carrito.length = 0; // Limpia el carrito
+  actualizarCarrito(); // Actualiza el carrito vacío
+  actualizarBurbujaCarrito(); // Actualiza la burbuja del carrito
+  guardarCarritoEnLocalStorage(); // Guarda el carrito vacío en localStorage
+}
+
 document.getElementById("abrirCarrito").addEventListener("click", function () {
   actualizarCarrito();
   $("#carritoModal").modal("show");
 });
+
+// Asigna la función al evento de clic en el botón "Finalizar Compra"
+document
+  .getElementById("finalizarCompraBtn")
+  .addEventListener("click", function () {
+    mostrarSweetAlert();
+  });
 
 // Al cargar la página, actualizar la burbuja del carrito
 window.onload = function () {
