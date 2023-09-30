@@ -1,4 +1,24 @@
+let comicsData = [];
 const carrito = JSON.parse(localStorage.getItem("carrito")) || []; // Iniciar carrito desde localStorage o usar un array vacío
+
+function iniciarCarrito(comicsData) {
+  // Guarda los datos de los cómics en una variable para usarlos más tarde
+  window.comicsData = comicsData;
+}
+
+// Llama a iniciarCarrito con los datos de los cómics cuando la página se carga
+window.onload = function () {
+  const url = "comics.json";
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      iniciarCarrito(data);
+    })
+    .catch((error) => {
+      console.error("Error al cargar el archivo JSON:", error);
+    });
+};
 
 // Función para agregar un elemento al carrito
 function agregarAlCarrito(nombre, precio) {
@@ -36,12 +56,29 @@ function actualizarBurbujaCarrito() {
 }
 
 function actualizarCarrito() {
+  console.log(comicsData);
   const carritoModalLista = document.getElementById("carrito-modal");
   carritoModalLista.innerHTML = "";
 
   let total = 0;
   carrito.forEach((item) => {
     const li = document.createElement("li");
+
+    // Crear una imagen para el cómic
+    const img = document.createElement("img");
+    const comicData = comicsData.find((comic) => comic.nombre === item.nombre);
+
+    if (comicData) {
+      img.src = `./img/${comicData.imagen}`;
+      img.alt = comicData.nombre;
+      img.className = "comic-img";
+    }
+
+    // Crear un elemento de texto para mostrar el nombre, cantidad y precio del cómic
+    const texto = document.createElement("span");
+    texto.textContent = `${item.cantidad}x ${item.nombre} - $${(
+      item.precio * item.cantidad
+    ).toFixed(2)}`;
 
     const btnAgregar = document.createElement("button");
     btnAgregar.textContent = "+";
@@ -61,10 +98,8 @@ function actualizarCarrito() {
       eliminarDelCarrito(item.nombre);
     };
 
-    li.textContent = `${item.cantidad}x ${item.nombre} - $${(
-      item.precio * item.cantidad
-    ).toFixed(2)}`;
-
+    li.appendChild(img); // Agregar la imagen al elemento <li>
+    li.appendChild(texto);
     li.appendChild(btnAgregar);
     li.appendChild(btnRestar);
     li.appendChild(btnEliminar);
@@ -122,8 +157,8 @@ function finalizarCompra() {
 }
 
 document.getElementById("abrirCarrito").addEventListener("click", function () {
-  actualizarCarrito();
-  $("#carritoModal").modal("show");
+  actualizarCarrito(); // Llama a la función para actualizar el carrito
+  $("#carritoModal").modal("show"); // Abre el modal del carrito
 });
 
 // Asigna la función al evento de clic en el botón "Finalizar Compra"

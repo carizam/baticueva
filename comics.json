@@ -1,9 +1,44 @@
 [
-  { "id": 1, "nombre": "Dark Crisis 1", "precio": 25.0 },
-  { "id": 2, "nombre": "Dark Crisis 2", "precio": 25.0 },
-  { "id": 3, "nombre": "Dark Crisis 3", "precio": 25.0 },
-  { "id": 4, "nombre": "Dark Crisis 2", "precio": 25.0 },
-  { "id": 5, "nombre": "Dark Crisis 2", "precio": 25.0 },
-  { "id": 6, "nombre": "Dark Crisis 2", "precio": 25.0 },
-  { "id": 7, "nombre": "Dark Crisis 2", "precio": 25.0 }
+  {
+    "nombre": "Dark Crisis 1",
+    "precio": 13.0,
+    "imagen": "./img/Dark-Crisis-1.jpg",
+    "descripcion": "Lorem ipsum dolor sit amet consectetur, adipisicing elit..."
+  },
+  {
+    "nombre": "Dark Crisis 2",
+    "precio": 15.0,
+    "imagen": "./img/Dark-Crisis-2.jpg",
+    "descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing elit..."
+  },
+  {
+    "nombre": "Dark Crisis 3",
+    "precio": 19.0,
+    "imagen": "img/Dark-Crisis-3.jpg",
+    "descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing elit..."
+  },
+  {
+    "nombre": "Dark Crisis 4",
+    "precio": 19.0,
+    "imagen": "img/Dark-Crisis-4.jpg",
+    "descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing elit..."
+  },
+  {
+    "nombre": "Dark Crisis 5",
+    "precio": 19.0,
+    "imagen": "img/Dark-Crisis-5.jpg",
+    "descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing elit..."
+  },
+  {
+    "nombre": "Dark Crisis 6",
+    "precio": 19.0,
+    "imagen": "img/Dark-Crisis-6.jpg",
+    "descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing elit..."
+  },
+  {
+    "nombre": "Dark Crisis 7",
+    "precio": 19.0,
+    "imagen": "img/Dark-Crisis-7.jpg",
+    "descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing elit..."
+  }
 ]

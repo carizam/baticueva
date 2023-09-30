@@ -7,11 +7,11 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
-    <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+    <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="./style.css" />
     <link rel="icon" href="./img/batman favicon.png" type="image/png" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -67,7 +67,7 @@
         <div class="col-md-4">
           <div class="card">
             <img
-              src="./img/Dark Crisis 1.jpg"
+              src="./img/Dark-Crisis-1.jpg"
               class="card-img-top"
               alt="Comic 1"
             />
@@ -92,9 +92,9 @@
         <div class="col-md-4">
           <div class="card">
             <img
-              src="./img/Dark Crisis 2.jpg"
+              src="./img/Dark-Crisis-2.jpg"
               class="card-img-top"
-              alt="Comic 1"
+              alt="Comic 2"
             />
             <div class="card-body">
               <h5 class="card-title">Dark Crisis 2</h5>
@@ -117,7 +117,7 @@
         <div class="col-md-4">
           <div class="card">
             <img
-              src="./img/Dark Crisis 3.jpg"
+              src="./img/Dark-Crisis-3.jpg"
               class="card-img-top"
               alt="Comic 1"
             />
@@ -142,7 +142,7 @@
         <div class="col-md-4">
           <div class="card">
             <img
-              src="./img/Dark Crisis 4.jpg"
+              src="./img/Dark-Crisis-4.jpg"
               class="card-img-top"
               alt="Comic 1"
             />
@@ -167,7 +167,7 @@
         <div class="col-md-4">
           <div class="card">
             <img
-              src="./img/Dark Crisis 5.jpg"
+              src="./img/Dark-Crisis-5.jpg"
               class="card-img-top"
               alt="Comic 1"
             />
@@ -192,9 +192,9 @@
         <div class="col-md-4">
           <div class="card">
             <img
-              src="./img/Dark Crisis 6.jpg"
+              src="./img/Dark-Crisis-6.jpg"
               class="card-img-top"
-              alt="Comic 1"
+              alt="Comic 6"
             />
             <div class="card-body">
               <h5 class="card-title">Dark Crisis 6</h5>
@@ -217,9 +217,9 @@
         <div class="col-md-4">
           <div class="card">
             <img
-              src="./img/Dark Crisis 7.jpg"
+              src="./img/Dark-Crisis-7.jpg"
               class="card-img-top"
-              alt="Comic 1"
+              alt="Comic 7"
             />
             <div class="card-body">
               <h5 class="card-title">Dark Crisis 7</h5>
@@ -242,7 +242,6 @@
       </div>
     </div>
     <!-- Sección del carrito de compras -->
-
     <!-- Modal del Carrito -->
     <div
       class="modal fade"
@@ -269,62 +268,7 @@
           </div>
           <div class="modal-body">
             <ul id="carrito-modal">
-              <li></li>
-              <li>
-                Dark Crisis 1 - $13.00
-                <button onclick="restarDelCarrito('Dark Crisis 1')">-</button>
-                <button onclick="agregarAlCarrito('Dark Crisis 1', 13.000)">
-                  +
-                </button>
-              </li>
-              <li>
-                Dark Crisis 2 - $13.00
-                <button onclick="restarDelCarrito('Dark Crisis 2')">-</button>
-                <button onclick="agregarAlCarrito('Dark Crisis 2', 15.000)">
-                  +
-                </button>
-              </li>
-              <li>
-                Dark Crisis 3 - $13.00
-                <button onclick="restarDelCarrito('Dark Crisis 3')">-</button>
-                <button onclick="agregarAlCarrito('Dark Crisis 3', 19.000)">
-                  +
-                </button>
-              </li>
-              <li>
-                Dark Crisis 4 - $13.00
-                <button onclick="restarDelCarrito('Dark Crisis 4')">-</button>
-                <button onclick="agregarAlCarrito('Dark Crisis 4', 19.000)">
-                  +
-                </button>
-              </li>
-              <li>
-                Dark Crisis 5 - $13.00
-                <button onclick="restarDelCarrito('Dark Crisis 5')">-</button>
-                <button onclick="agregarAlCarrito('Dark Crisis 5', 19.000)">
-                  +
-                </button>
-              </li>
-              <li>
-                Dark Crisis 6 - $13.00
-                <button onclick="restarDelCarrito('Dark Crisis 6')">-</button>
-                <button onclick="agregarAlCarrito('Dark Crisis 6', 19.000)">
-                  +
-                </button>
-              </li>
-              <li>
-                Dark Crisis 7 - $13.00
-                <button onclick="restarDelCarrito('Dark Crisis 7')">-</button>
-                <button onclick="agregarAlCarrito('Dark Crisis 7', 19.000)">
-                  +
-                </button>
-              </li>
-              <li>
-                Nombre del producto - Precio
-                <button onclick="eliminarDelCarrito('Nombre del producto')">
-                  Eliminar
-                </button>
-              </li>
+              <!-- Aquí se agregarán los elementos del carrito dinámicamente -->
             </ul>
             <p class="modal-total">
               Total: $<span id="total-modal">0.00</span>
